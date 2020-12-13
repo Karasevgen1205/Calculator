@@ -16,6 +16,13 @@ def add_operation(operation):
     calc.delete(0, tk.END)
     calc.insert(0, value+operation)
 
+
+def calculate():
+    value = calc.get()
+    calc.delete(0, tk.END)
+    calc.insert(0, eval(value))
+
+
 def make_digit_button(digit):
     return tk.Button(text=digit, bd=3, font=('Arial', 15), command=lambda : add_digit(digit))
 
@@ -27,7 +34,7 @@ def make_operation_button(operation):
 
 def make_calc_button(operation):
     return tk.Button(text=operation, bd=3, font=('Arial', 15), fg='red',
-                     command=lambda : add_operation(operation))
+                     command=calculate)
 
 
 win = tk.Tk()
